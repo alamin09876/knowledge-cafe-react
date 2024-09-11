@@ -1,9 +1,23 @@
-const BookMarks = () => {
+import PropTypes from "prop-types";
+import BookMark from "../BookMark/BookMark";
+
+const BookMarks = ({ bookMarks }) => {
   return (
-    <div className="md:w-1/3">
-      <h2 className="text-4xl">Bookmarks</h2>
+    <div>
+      <div>
+        <h2 className="text-2xl">Bookmarks : {bookMarks.length}</h2>
+        <div>
+          {bookMarks.map((bookMark) => (
+            <BookMark key={bookMark.id} bookMark={bookMark}></BookMark>
+          ))}
+        </div>
+      </div>
     </div>
   );
+};
+
+BookMarks.propTypes = {
+  bookMarks: PropTypes.array,
 };
 
 export default BookMarks;
